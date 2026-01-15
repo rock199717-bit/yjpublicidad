@@ -15,7 +15,7 @@ body {
   overflow: hidden;
 }
 
-/* FONDO RAYAS ANIMADAS */
+/* FONDO RAYAS */
 body::before {
   content: "";
   position: fixed;
@@ -44,26 +44,24 @@ body::before {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transition: opacity 0.8s ease;
   z-index: 10;
 }
 
-/* LOGO INTRO (JPG CORREGIDO) */
+/* LOGO INTRO */
 .logo-intro {
-  width: 220px;
-  height: 220px;
-  margin-bottom: 20px;
+  width: 216px;
+  height: 216px;
   border-radius: 50%;
-  overflow: hidden;          /* 🔴 CLAVE */
-  background: #ffffff;       /* limpia bordes JPG */
+  overflow: hidden;
+  background: #fff;
+  margin-bottom: 20px;
   transition: transform 0.8s ease, opacity 0.8s ease;
 }
 
 .logo-intro img {
   width: 100%;
   height: 100%;
-  object-fit: cover;         /* 🔴 CLAVE */
-  display: block;
+  object-fit: cover;
 }
 
 .logo-intro.shrink {
@@ -71,7 +69,7 @@ body::before {
   opacity: 0;
 }
 
-/* TEXTO TYPING */
+/* TYPING */
 .typing {
   font-size: 15px;
   color: #aaa;
@@ -89,7 +87,7 @@ body::before {
 
 /* CARD */
 .card {
-  background: #ffffff;
+  background: #fff;
   width: 320px;
   padding: 28px 22px;
   border-radius: 18px;
@@ -105,24 +103,23 @@ body::before {
   opacity: 1;
 }
 
-/* LOGO FINAL CARD (JPG CORREGIDO) */
+/* LOGO CARD */
 .logo {
   width: 110px;
   height: 110px;
   margin: 0 auto 20px;
   border-radius: 50%;
-  overflow: hidden;          /* 🔴 CLAVE */
-  background: #ffffff;       /* limpia bordes JPG */
+  overflow: hidden;
+  background: #fff;
 }
 
 .logo img {
   width: 100%;
   height: 100%;
-  object-fit: cover;         /* 🔴 CLAVE */
-  display: block;
+  object-fit: cover;
 }
 
-/* TEXTO CARD */
+/* TEXTO */
 .card p {
   font-size: 14px;
   color: #666;
@@ -142,8 +139,38 @@ body::before {
   color: #fff;
   text-decoration: none;
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.whatsapp { background: #4fa383; }
-.mail { background: #1f2a35; }
-.portfolio { background: #c94b32; }
+/* WHATSAPP HOVER PRO */
+.whatsapp {
+  background: #4fa383;
+}
+
+.whatsapp:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 25px rgba(79,163,131,0.6);
+}
+
+/* OTROS */
+.mail {
+  background: #1f2a35;
+}
+
+.mail:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+}
+
+.portfolio {
+  background: #c94b32;
+}
+
+.portfolio:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(201,75,50,0.5);
+}
