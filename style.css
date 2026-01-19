@@ -130,9 +130,10 @@ body::before {
 
 .btn {
   width: 100%;
-  padding: 12px;
+  height: 48px;              /* 👈 ALTURA FIJA */
+  padding: 0 16px;           /* 👈 solo horizontal */
   border-radius: 10px;
-  text-decoration: none; /* QUITA SUBRAYADO */
+  text-decoration: none;
   color: #fff;
   font-weight: 600;
   display: flex;
