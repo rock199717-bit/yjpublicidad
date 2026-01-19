@@ -39,31 +39,23 @@ function openView(viewId, cardId) {
   const view = document.getElementById(viewId);
   const viewCard = document.getElementById(cardId);
 
+  // prevenir clicks dobles
   if (activeView) return;
 
-  // Salida de la card principal
+  // salida card principal
   card.classList.remove("show");
   card.classList.add("hide");
 
   setTimeout(() => {
-    view.classList.add("show");
-
-    // 🔑 Reset visual del card interno
-    viewCard.classList.remove("show", "hide");
-    viewCard.style.opacity = "0";
-
-    requestAnimationFrame(() => {
-      viewCard.classList.add("show");
-      viewCard.style.opacity = "";
-    });
-
     card.classList.remove("hide");
+
+    view.classList.add("show");
+    viewCard.classList.add("show");
 
     activeView = view;
     activeCard = viewCard;
-  }, 300);
+  }, 350);
 }
-
 
 function showView(view, viewCard) {
   view.classList.add("show");
@@ -79,24 +71,22 @@ function showView(view, viewCard) {
 function closeViews() {
   if (!activeView || !activeCard) return;
 
-  // 1️⃣ Desvanece la card activa
+  // salida card actual (correo o portafolio)
   activeCard.classList.remove("show");
   activeCard.classList.add("hide");
 
-  // 2️⃣ Espera animación
   setTimeout(() => {
     activeView.classList.remove("show");
+    activeCard.classList.remove("hide");
 
-    // 3️⃣ Vuelve la card principal con fade
-    card.classList.remove("hide");
+    // entrada card principal
     card.classList.add("show");
 
-    // limpieza
-    activeCard.classList.remove("hide");
     activeView = null;
     activeCard = null;
   }, 350);
 }
+
 
 
 
