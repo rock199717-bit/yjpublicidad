@@ -18,7 +18,7 @@ body {
 body::before {
   content: "";
   position: fixed;
-  inset: -20%;
+  inset: -30%;
   background-image: repeating-linear-gradient(
     135deg,
     rgba(255,255,255,0.05),
@@ -323,3 +323,4 @@ body::before {
     width: 720px;
   }
 }
+
