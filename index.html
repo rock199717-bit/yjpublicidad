@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YJ DIF</title>
+  <title>YJ Publicidad</title>
 
   <link rel="stylesheet" href="style.css">
 
@@ -58,22 +58,22 @@
     <div class="brand">
       <h3>Samsung</h3>
       <div class="gallery">
-        <div class="photo"><img src="img/samsung1.jpg"></div>
-        <div class="photo"><img src="img/samsung2.jpg"></div>
-        <div class="photo"><img src="img/samsung3.jpg"></div>
-        <div class="photo"><img src="img/samsung4.jpg"></div>
-        <div class="photo"><img src="img/samsung5.jpg"></div>
+        <div class="photo"><img src="img/samsung1.jpg" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/samsung2.jpg" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/samsung3.jpg" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/samsung4.jpg" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/samsung5.jpg" onclick="openViewer(this)"></div>
       </div>
     </div>
 
     <div class="brand">
       <h3>DBS</h3>
       <div class="gallery">
-        <div class="photo"><img src="img/dbs1.jpg"></div>
-        <div class="photo"><img src="img/dbs2.jpg"></div>
-        <div class="photo"><img src="img/dbs3.jpg"></div>
-        <div class="photo"><img src="img/dbs4.jpg"></div>
-        <div class="photo"><img src="img/dbs5.jpg"></div>
+        <div class="photo"><img src="img/dbs1.jpg" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/dbs2.jpg" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/dbs3.jpg" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/dbs4.jpg" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/dbs5.jpg" onclick="openViewer(this)"></div>
       </div>
     </div>
 
@@ -115,6 +115,11 @@
     </div>
 
   </div>
+</div>
+
+<div id="imageViewer" class="image-viewer" onclick="closeViewer(event)">
+  <img id="viewerImg" src="" alt="Vista completa">
+  <button class="viewer-close">✕</button>
 </div>
 
 <script src="script.js"></script>

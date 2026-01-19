@@ -8,6 +8,7 @@ const card = document.getElementById("card");
 let index = 0;
 let activeView = null;
 let activeCard = null;
+let isTransitioning = false;
 
 /* ===== INTRO ===== */
 function typeEffect() {
@@ -33,28 +34,36 @@ function finishIntro() {
   }, 1400);
 }
 
-/* ===== SISTEMA DE VISTAS (FIX DEFINITIVO) ===== */
+/* ===== SISTEMA DE VISTAS (ROBUSTO) ===== */
 function openView(viewId, cardId) {
   const view = document.getElementById(viewId);
   const viewCard = document.getElementById(cardId);
 
-  // reset seguro
-  viewCard.classList.remove("hide", "show");
+  if (activeView) return;
 
+  // Salida de la card principal
   card.classList.remove("show");
+  card.classList.add("hide");
 
-  if (activeView) {
-    activeCard.classList.remove("show");
-    activeCard.classList.add("hide");
+  setTimeout(() => {
+    view.classList.add("show");
 
-    setTimeout(() => {
-      activeView.classList.remove("show");
-      showView(view, viewCard);
-    }, 300);
-  } else {
-    showView(view, viewCard);
-  }
+    // 🔑 Reset visual del card interno
+    viewCard.classList.remove("show", "hide");
+    viewCard.style.opacity = "0";
+
+    requestAnimationFrame(() => {
+      viewCard.classList.add("show");
+      viewCard.style.opacity = "";
+    });
+
+    card.classList.remove("hide");
+
+    activeView = view;
+    activeCard = viewCard;
+  }, 300);
 }
+
 
 function showView(view, viewCard) {
   view.classList.add("show");
@@ -68,21 +77,28 @@ function showView(view, viewCard) {
 }
 
 function closeViews() {
-  if (!activeView) return;
+  if (!activeView || !activeCard) return;
 
+  // 1️⃣ Desvanece la card activa
   activeCard.classList.remove("show");
   activeCard.classList.add("hide");
 
+  // 2️⃣ Espera animación
   setTimeout(() => {
     activeView.classList.remove("show");
+
+    // 3️⃣ Vuelve la card principal con fade
+    card.classList.remove("hide");
     card.classList.add("show");
 
-    // limpieza CRÍTICA
+    // limpieza
     activeCard.classList.remove("hide");
     activeView = null;
     activeCard = null;
-  }, 300);
+  }, 350);
 }
+
+
 
 /* ===== COPIAR CORREO ===== */
 function copyMail() {
@@ -92,5 +108,21 @@ function copyMail() {
   setTimeout(() => msg.classList.remove("show"), 2000);
 }
 
-/* INICIAR */
+/* ===== VISOR DE IMÁGENES ===== */
+const viewer = document.getElementById("imageViewer");
+const viewerImg = document.getElementById("viewerImg");
+
+function openViewer(img) {
+  viewerImg.src = img.src;
+  viewer.classList.add("show");
+}
+
+function closeViewer(e) {
+  if (e.target === viewer || e.target.classList.contains("viewer-close")) {
+    viewer.classList.remove("show");
+    viewerImg.src = "";
+  }
+}
+
+/* ===== INICIAR ===== */
 typeEffect();
