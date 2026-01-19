@@ -6,7 +6,10 @@ const logoIntro = document.querySelector(".logo-intro");
 const card = document.getElementById("card");
 
 let index = 0;
+let activeView = null;
+let activeCard = null;
 
+/* ===== INTRO ===== */
 function typeEffect() {
   if (index < text.length) {
     typingText.innerHTML += text[index] === "\n" ? "<br>" : text[index];
@@ -30,23 +33,64 @@ function finishIntro() {
   }, 1400);
 }
 
+/* ===== SISTEMA DE VISTAS (FIX DEFINITIVO) ===== */
+function openView(viewId, cardId) {
+  const view = document.getElementById(viewId);
+  const viewCard = document.getElementById(cardId);
+
+  // reset seguro
+  viewCard.classList.remove("hide", "show");
+
+  card.classList.remove("show");
+
+  if (activeView) {
+    activeCard.classList.remove("show");
+    activeCard.classList.add("hide");
+
+    setTimeout(() => {
+      activeView.classList.remove("show");
+      showView(view, viewCard);
+    }, 300);
+  } else {
+    showView(view, viewCard);
+  }
+}
+
+function showView(view, viewCard) {
+  view.classList.add("show");
+
+  setTimeout(() => {
+    viewCard.classList.add("show");
+  }, 50);
+
+  activeView = view;
+  activeCard = viewCard;
+}
+
+function closeViews() {
+  if (!activeView) return;
+
+  activeCard.classList.remove("show");
+  activeCard.classList.add("hide");
+
+  setTimeout(() => {
+    activeView.classList.remove("show");
+    card.classList.add("show");
+
+    // limpieza CRÍTICA
+    activeCard.classList.remove("hide");
+    activeView = null;
+    activeCard = null;
+  }, 300);
+}
+
+/* ===== COPIAR CORREO ===== */
+function copyMail() {
+  navigator.clipboard.writeText("yfranco@yjpublicidad.pe");
+  const msg = document.getElementById("copyMessage");
+  msg.classList.add("show");
+  setTimeout(() => msg.classList.remove("show"), 2000);
+}
+
+/* INICIAR */
 typeEffect();
-
-/* ===== PORTAFOLIO ===== */
-
-const openPortfolio = document.getElementById("openPortfolio");
-const portfolio = document.getElementById("portfolio");
-const backHome = document.getElementById("backHome");
-
-openPortfolio.addEventListener("click", e => {
-  e.preventDefault();
-  card.style.display = "none";
-  portfolio.style.display = "block";
-  portfolio.classList.add("show");
-});
-
-backHome.addEventListener("click", e => {
-  e.preventDefault();
-  portfolio.style.display = "none";
-  card.style.display = "block";
-});

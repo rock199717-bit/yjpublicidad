@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YJ Publicidad</title>
+  <title>YJ DIF</title>
+
   <link rel="stylesheet" href="style.css">
+
   <!-- ICONOS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
@@ -21,7 +23,7 @@
   </div>
 </div>
 
-<!-- CARD -->
+<!-- CARD PRINCIPAL -->
 <div class="card" id="card">
   <div class="logo">
     <img src="YJ DIF1.jpg" alt="Logo YJ">
@@ -30,26 +32,88 @@
   <p>Soluciones visuales integrales</p>
 
   <div class="buttons">
-    <!-- WHATSAPP -->
-    <a 
-      href="https://wa.me/51959743755?text=Hola%20quiero%20información" 
-      class="btn whatsapp"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <i class="fab fa-whatsapp"></i>
-      WhatsApp
+    <a href="https://wa.me/51959743755" target="_blank" class="btn whatsapp">
+      <i class="fa-brands fa-whatsapp"></i> WhatsApp
     </a>
 
-    <a href="#" class="btn mail">
-      <i class="fas fa-envelope"></i>
-      Correo
-    </a>
+    <button class="btn mail" onclick="openView('mailView','mailCard')">
+      <i class="fa-solid fa-envelope"></i> Correo
+    </button>
 
-    <a href="#" class="btn portfolio">
-      <i class="fas fa-briefcase"></i>
-      Ver Portafolio
-    </a>
+    <button class="btn portfolio" onclick="openView('portfolioView','portfolioCard')">
+      <i class="fa-solid fa-briefcase"></i> Ver Portafolio
+    </button>
+  </div>
+</div>
+
+<!-- PORTAFOLIO -->
+<div class="portfolio-view" id="portfolioView">
+  <div class="view-card" id="portfolioCard">
+
+    <div class="portfolio-header">
+      <h2>Portafolio</h2>
+      <p>Retail · Gran Formato · POP · Corte Láser · Vinil · Tela</p>
+    </div>
+
+    <div class="brand">
+      <h3>Samsung</h3>
+      <div class="gallery">
+        <div class="photo"><img src="img/samsung1.jpg"></div>
+        <div class="photo"><img src="img/samsung2.jpg"></div>
+        <div class="photo"><img src="img/samsung3.jpg"></div>
+        <div class="photo"><img src="img/samsung4.jpg"></div>
+        <div class="photo"><img src="img/samsung5.jpg"></div>
+      </div>
+    </div>
+
+    <div class="brand">
+      <h3>DBS</h3>
+      <div class="gallery">
+        <div class="photo"><img src="img/dbs1.jpg"></div>
+        <div class="photo"><img src="img/dbs2.jpg"></div>
+        <div class="photo"><img src="img/dbs3.jpg"></div>
+        <div class="photo"><img src="img/dbs4.jpg"></div>
+        <div class="photo"><img src="img/dbs5.jpg"></div>
+      </div>
+    </div>
+
+    <div class="buttons back-btn">
+      <button class="btn portfolio" onclick="closeViews()">
+        <i class="fa-solid fa-arrow-left"></i> Volver
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- CORREO -->
+<div class="portfolio-view" id="mailView">
+  <div class="view-card" id="mailCard">
+
+    <div class="buttons">
+      <a href="https://mail.google.com/mail/?view=cm&to=yfranco@yjpublicidad.pe"
+         target="_blank" class="btn gmail">
+        <i class="fa-brands fa-google"></i> Gmail
+      </a>
+
+      <a href="https://outlook.live.com/mail/0/deeplink/compose?to=yfranco@yjpublicidad.pe"
+         target="_blank" class="btn outlook">
+        <i class="fa-brands fa-microsoft"></i> Outlook
+      </a>
+
+      <button class="btn mail" onclick="copyMail()">
+        <i class="fa-solid fa-copy"></i> Copiar correo
+      </button>
+
+      <div id="copyMessage">Correo copiado</div>
+    </div>
+
+    <div class="buttons back-btn">
+      <button class="btn portfolio" onclick="closeViews()">
+        <i class="fa-solid fa-arrow-left"></i> Volver
+      </button>
+    </div>
+
   </div>
 </div>
 
