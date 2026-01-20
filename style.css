@@ -388,4 +388,39 @@ body::before {
     grid-template-columns: repeat(5, 1fr);
   }
 }
+.name {
+  margin: 0 0 2px 0;
+  font-weight: 700;
+}
+
+.role {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+
+.card .name {
+  margin: 0;
+  margin-bottom: 2px;
+  font-weight: 700;
+}
+
+.card .role {
+  margin: 0;
+  line-height: 1.2;
+  color: #666;
+}
+.role {
+  margin-bottom: 16px;
+}
+/* Separación correcta entre cargo y botones */
+.role {
+  margin-bottom: 22px;
+}
+
+/* Seguridad extra por si otro estilo lo pisa */
+.buttons {
+  margin-top: 8px;
+}
 
