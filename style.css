@@ -447,64 +447,14 @@ body::before {
   font-size: 14px;
 }
 
+
 /* =========================
-   EQUIPOS - ESTILO DIFERENTE
+   NUESTROS EQUIPOS - CARRUSEL
    ========================= */
 
-.brand.equipos .photo {
-  position: relative;
-  cursor: default;
-  overflow: hidden;
+.brand.equipos {
+  margin-bottom: 50px;
 }
-
-/* Imagen */
-.brand.equipos .photo img {
-  transition: transform 0.5s ease;
-}
-
-/* Capa oscura */
-.brand.equipos .photo::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.55);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-/* Texto */
-.brand.equipos .equip-label {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-weight: 700;
-  letter-spacing: 1px;
-  font-size: 18px;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
-  z-index: 2;
-}
-
-/* Hover */
-.brand.equipos .photo:hover img {
-  transform: scale(1.15);
-}
-
-.brand.equipos .photo:hover::after {
-  opacity: 1;
-}
-
-.brand.equipos .photo:hover .equip-label {
-  opacity: 1;
-  transform: translateY(0);
-}
-/* ===============================
-   CARRUSEL NUESTROS EQUIPOS
-   =============================== */
 
 .equipos-marquee {
   width: 100%;
@@ -516,10 +466,108 @@ body::before {
   display: flex;
   gap: 0;
   width: max-content;
-  animation: equiposScroll 25s linear infinite;
+  animation: equiposScroll 28s linear infinite;
 }
 
-/* Movimiento continuo */
+.equipos-marquee:hover .equipos-track {
+  animation-play-state: paused;
+}
+
+@keyframes equiposScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* SOLO equipos */
+.brand.equipos .photo {
+  min-width: 220px;
+  height: 220px;
+  border-radius: 0;        /* ❌ sin círculo */
+  position: relative;
+  cursor: default;
+  animation: none;         /* sin entrada escalonada */
+}
+
+/* imagen */
+.brand.equipos .photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+/* hover zoom */
+.brand.equipos .photo:hover img {
+  transform: scale(1.12);
+}
+
+/* capa oscura */
+.brand.equipos .photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.brand.equipos .photo:hover::after {
+  opacity: 1;
+}
+
+/* texto */
+.equip-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 1px;
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 0.35s ease;
+}
+
+.brand.equipos .photo:hover .equip-label {
+  opacity: 1;
+}
+
+/* responsive */
+@media (max-width: 600px) {
+  .brand.equipos .photo {
+    min-width: 170px;
+    height: 170px;
+  }
+
+  .equip-label {
+    font-size: 15px;
+  }
+}
+/* =========================
+   CARRUSEL - NUESTROS EQUIPOS
+   ========================= */
+
+.brand.equipos {
+  margin-bottom: 50px;
+}
+
+.equipos-marquee {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.equipos-track {
+  display: flex;
+  gap: 0;
+  width: max-content;
+  animation: equiposScroll 28s linear infinite;
+}
+
+/* Animación continua */
 @keyframes equiposScroll {
   from {
     transform: translateX(0);
@@ -529,62 +577,76 @@ body::before {
   }
 }
 
-/* Pausar al pasar el mouse */
-.equipos-marquee:hover .equipos-track {
-  animation-play-state: paused;
-}
-
-/* SOLO fotos de NUESTROS EQUIPOS */
-.equipos .photo {
-  border-radius: 0;
-  min-width: 220px;
-  height: 220px;
+/* Fotos SOLO de equipos */
+.brand.equipos .photo {
+  width: 180px;
+  height: 180px;
+  flex-shrink: 0;
+  border-radius: 0;           /* sin bordes circulares */
   position: relative;
+  overflow: hidden;
+  background: #000;
+  opacity: 1;
+  transform: none;
+  animation: none;
 }
 
 /* Imagen */
-.equipos .photo img {
+.brand.equipos .photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s ease;
+  transition: transform 0.5s ease;
 }
 
-/* Zoom */
-.equipos .photo:hover img {
-  transform: scale(1.12);
+/* Hover zoom */
+.brand.equipos .photo:hover img {
+  transform: scale(1.15);
 }
 
 /* Capa oscura */
-.equipos .photo::after {
+.brand.equipos .photo::after {
   content: "";
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.45);
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.4s ease;
 }
 
-.equipos .photo:hover::after {
+.brand.equipos .photo:hover::after {
   opacity: 1;
 }
 
-/* Texto del equipo */
+/* Texto encima */
 .equip-label {
   position: absolute;
-  bottom: 14px;
-  left: 14px;
-  z-index: 2;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
   color: #fff;
-  font-weight: 700;
   font-size: 14px;
+  font-weight: 700;
   letter-spacing: 1px;
+  text-transform: uppercase;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  z-index: 2;
+  transition: opacity 0.4s ease;
 }
 
-.equipos .photo:hover .equip-label {
+.brand.equipos .photo:hover .equip-label {
   opacity: 1;
 }
 
+/* Pausa el carrusel cuando pasas el mouse */
+.equipos-marquee:hover .equipos-track {
+  animation-play-state: paused;
+}
 
+/* Responsive */
+@media (max-width: 600px) {
+  .brand.equipos .photo {
+    width: 140px;
+    height: 140px;
+  }
+}
