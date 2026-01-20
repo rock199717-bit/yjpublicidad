@@ -32,7 +32,6 @@
   <p class="name"><strong>Yvanof Franco Sevilla</strong></p>
   <p class="role">Gerente Comercial</p>
 
-
   <div class="buttons">
     <a href="https://wa.me/51959743755?text=Quiero%20Mas%20Informacion" target="_blank" class="btn whatsapp">
       <i class="fa-brands fa-whatsapp"></i> WhatsApp
@@ -53,8 +52,87 @@
   <div class="view-card" id="portfolioCard">
 
     <div class="portfolio-header">
-      <h2>Portafolio</h2>
-      <p>Retail · Gran Formato · POP · Corte Láser · Vinil · Tela</p>
+      <h1>Portafolio</h1>
+
+      <p class="portfolio-desc">
+        <strong><em>
+          Contamos con un equipo de alta calidad profesional y hacemos uso de tecnologías avanzadas que nos permiten realizar trabajos de muy buena calidad y a costos competitivos, brindar soluciones integrales en diseño y PRODUCCION de elementos para la comunicación visual.
+        </em></strong>
+      </p>
+
+      <p class="portfolio-services">
+        Realizamos Retail, Gran Formato, POP, Cortes en Láser, Impresiones en vinil solvente y UV, Impresiones en Tela Led
+      </p>
+    </div>
+
+    <!-- =========================
+         NUESTROS EQUIPOS (CINTA)
+         ========================= -->
+    <div class="brand equipos">
+      <h3>Nuestros Equipos</h3>
+
+      <div class="equipos-marquee">
+        <div class="gallery equipos-track">
+
+          <!-- BLOQUE 1 -->
+          <div class="photo">
+            <img src="img/equipo1.jpg">
+            <div class="equip-label">UV</div>
+          </div>
+          <div class="photo">
+            <img src="img/equipo2.jpg">
+            <div class="equip-label">LÁSER</div>
+          </div>
+          <div class="photo">
+            <img src="img/equipo3.jpg">
+            <div class="equip-label">PLOTEO</div>
+          </div>
+          <div class="photo">
+            <img src="img/equipo4.jpg">
+            <div class="equip-label">SOLVENTE</div>
+          </div>
+          <div class="photo">
+            <img src="img/equipo5.jpg">
+            <div class="equip-label">LAMINADORA</div>
+          </div>
+          <div class="photo">
+            <img src="img/equipo6.jpg">
+            <div class="equip-label">EQUIPO DE DISEÑO</div>
+          </div>
+
+          <!-- BLOQUE 2 (DUPLICADO) -->
+          <div class="photo">
+            <img src="img/equipo1.jpg">
+            <div class="equip-label">UV</div>
+          </div>
+          <div class="photo">
+            <img src="img/equipo2.jpg">
+            <div class="equip-label">LÁSER</div>
+          </div>
+          <div class="photo">
+            <img src="img/equipo3.jpg">
+            <div class="equip-label">PLOTEO</div>
+          </div>
+          <div class="photo">
+            <img src="img/equipo4.jpg">
+            <div class="equip-label">SOLVENTE</div>
+          </div>
+          <div class="photo">
+            <img src="img/equipo5.jpg">
+            <div class="equip-label">LAMINADORA</div>
+          </div>
+          <div class="photo">
+            <img src="img/equipo6.jpg">
+            <div class="equip-label">EQUIPO DE DISEÑO</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- RESTO DEL PORTAFOLIO -->
+    <div class="brand">
+      <h1>Nuestros Clientes</h1>
     </div>
 
     <div class="brand">
@@ -80,19 +158,6 @@
         <div class="photo"><img src="img/dbs6.jpg" onclick="openViewer(this)"></div>
       </div>
     </div>
-    <div class="brand">
-      <h3>Check</h3>
-      <div class="gallery">
-        <div class="photo"><img src="img/check1.jpg" onclick="openViewer(this)"></div>
-        <div class="photo"><img src="img/check2.jpg" onclick="openViewer(this)"></div>
-        <div class="photo"><img src="img/check3.jpg" onclick="openViewer(this)"></div>
-        <div class="photo"><img src="img/check4.jpg" onclick="openViewer(this)"></div>
-        <div class="photo"><img src="img/check5.jpg" onclick="openViewer(this)"></div>
-        <div class="photo"><img src="img/check6.jpg" onclick="openViewer(this)"></div>
-
-      </div>
-    </div>
-
 
     <div class="buttons back-btn">
       <button class="btn portfolio" onclick="closeViews()">
@@ -103,39 +168,9 @@
   </div>
 </div>
 
-<!-- CORREO -->
-<div class="portfolio-view" id="mailView">
-  <div class="view-card" id="mailCard">
-
-    <div class="buttons">
-      <a href="https://mail.google.com/mail/?view=cm&to=yfranco@yjpublicidad.pe"
-         target="_blank" class="btn gmail">
-        <i class="fa-brands fa-google"></i> Gmail
-      </a>
-
-      <a href="https://outlook.live.com/mail/0/deeplink/compose?to=yfranco@yjpublicidad.pe"
-         target="_blank" class="btn outlook">
-        <i class="fa-brands fa-microsoft"></i> Outlook
-      </a>
-
-      <button class="btn mail" onclick="copyMail()">
-        <i class="fa-solid fa-copy"></i> Copiar correo
-      </button>
-
-      <div id="copyMessage">Correo copiado</div>
-    </div>
-
-    <div class="buttons back-btn">
-      <button class="btn portfolio" onclick="closeViews()">
-        <i class="fa-solid fa-arrow-left"></i> Volver
-      </button>
-    </div>
-
-  </div>
-</div>
-
+<!-- VISOR -->
 <div id="imageViewer" class="image-viewer" onclick="closeViewer(event)">
-  <img id="viewerImg" src="" alt="Vista completa">
+  <img id="viewerImg" src="">
   <button class="viewer-close">✕</button>
 </div>
 
