@@ -381,11 +381,19 @@ body::before {
   }
 }
 
+/* OTROS */
+@media (min-width: 910px) and (max-width: 1030px) {
+
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 /* Pantallas muy grandes */
 @media (min-width: 1200px) {
 
   .gallery {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
   }
 }
 .name {
@@ -402,7 +410,7 @@ body::before {
 
 .card .name {
   margin: 0;
-  margin-bottom: 2px;
+  margin-bottom: 2px;	
   font-weight: 700;
 }
 
