@@ -18,7 +18,7 @@ body {
 body::before {
   content: "";
   position: fixed;
-  inset: -70%;
+  inset: -20%;
   background-image: repeating-linear-gradient(
     135deg,
     rgba(255,255,255,0.05),
@@ -324,4 +324,68 @@ body::before {
   }
 }
 
+/* =========================
+   RESPONSIVE PORTAFOLIO
+   ========================= */
+
+/* Card del portafolio */
+#portfolioCard {
+  width: 92vw;
+  max-width: 1000px;
+}
+
+/* Ajuste general mobile */
+@media (max-width: 480px) {
+
+  .portfolio-header h2 {
+    font-size: 22px;
+  }
+
+  .portfolio-header p {
+    font-size: 13px;
+    padding: 0 10px;
+  }
+
+  .brand h3 {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .photo {
+    border-radius: 14px;
+  }
+}
+
+/* Tablets */
+@media (min-width: 481px) and (max-width: 900px) {
+
+  #portfolioCard {
+    width: 95vw;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Desktop */
+@media (min-width: 901px) {
+
+  .gallery {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Pantallas muy grandes */
+@media (min-width: 1200px) {
+
+  .gallery {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
 
