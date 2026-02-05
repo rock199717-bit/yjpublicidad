@@ -139,41 +139,43 @@
         </div>
       </div>
     </div>
-
+    <div class="portfolio-header">
+      <h1>Nuestros Clientes</h1>
+    </div>
     <!-- RESTO DEL PORTAFOLIO -->
     <div class="brand">
       <h3>Samsung</h3>
       <div class="gallery">
-        <div class="photo"><img src="img/samsung1.jpg" onclick="openViewer(this)"></div>
-        <div class="photo"><img src="img/samsung2.jpg" onclick="openViewer(this)"></div>
-        <div class="photo"><img src="img/samsung3.jpg" onclick="openViewer(this)"></div>
-        <div class="photo"><img src="img/samsung4.jpg" onclick="openViewer(this)"></div>
-        <div class="photo"><img src="img/samsung5.jpg" onclick="openViewer(this)"></div>
-        <div class="photo"><img src="img/samsung6.jpg" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/samsung1.jpg" data-caption="INSTALACION DE TELA LED UV" onclick="openViewer(this)" ></div>
+        <div class="photo"><img src="img/samsung2.jpg" data-caption="INSTALACION DE VINIL UV EN COLUMNA" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/samsung3.jpg" data-caption="INSTALACION Y BRANDEO DE PORTICO" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/samsung4.jpg" data-caption="INSTALACION VINIL AL ESPEJO UV CON LUZ" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/samsung5.jpg" data-caption="INSTALACION Y BRANDEO DE VITRINA" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/samsung6.jpg" data-caption="INSTALACION Y BRANDEO DE VITRINA" onclick="openViewer(this)"></div>
       </div>
     </div>
 
     <div class="brand">
       <h3>DBS</h3>
       <div class="gallery">
-        <div class="photo"><img src="img/dbs1.jpg" onclick="openViewer(this)"></div>
-        <div class="photo"><img src="img/dbs2.jpg" onclick="openViewer(this)"></div>
-        <div class="photo"><img src="img/dbs3.jpg" onclick="openViewer(this)"></div>
-        <div class="photo"><img src="img/dbs4.jpg" onclick="openViewer(this)"></div>
-        <div class="photo"><img src="img/dbs5.jpg" onclick="openViewer(this)"></div>
-        <div class="photo"><img src="img/dbs6.jpg" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/dbs1.jpg" data-caption="INSTALACION DE VINIL" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/dbs2.jpg" data-caption="BRANDEO DE MAMPARAS" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/dbs3.jpg" data-caption="BRANDEO DE MUEBLE" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/dbs4.jpg" data-caption="BRANDEO DE MUEBLE CABECERA" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/dbs5.jpg" data-caption="BRANDEO DE CUBRESENSORES" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/dbs6.jpg" data-caption="INSTALACION DE VINIL" onclick="openViewer(this)"></div>
       </div>
     </div>
 
     <div class="brand">
       <h3>Check</h3>
       <div class="gallery">
-        <div class="photo"><img src="img/check1.jpg" onclick="openViewer(this)"></div>
-        <div class="photo"><img src="img/check2.jpg" onclick="openViewer(this)"></div>
-        <div class="photo"><img src="img/check3.jpg" onclick="openViewer(this)"></div>
-        <div class="photo"><img src="img/check4.jpg" onclick="openViewer(this)"></div>
-        <div class="photo"><img src="img/check5.jpg" onclick="openViewer(this)"></div>
-        <div class="photo"><img src="img/check6.jpg" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/check1.jpg" data-caption="BRANDEO DE MUEBLE CABECERA" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/check2.jpg" ata-caption="BRANDEO DE CUBRESENSORES" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/check3.jpg" data-caption="BRANDEO DE MUEBLE CABECERA" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/check4.jpg" data-caption="IMPRESION Y BRANDEO DE JALAVISTA" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/check5.jpg" data-caption="BRANDEO DE MUEBLE CABECERA" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/check6.jpg" data-caption="IMPRESION Y BRANDEO DE JALAVISTA" onclick="openViewer(this)"></div>
       </div>
     </div>
 
@@ -216,8 +218,11 @@
 </div>
 
 <div id="imageViewer" class="image-viewer" onclick="closeViewer(event)">
-  <img id="viewerImg" src="" alt="Vista completa">
-  <button class="viewer-close">✕</button>
+  <div class="viewer-box">
+    <img id="viewerImg" src="" alt="Vista completa">
+    <div id="viewerCaption" class="viewer-caption">Texto de ejemplo</div>
+    <button class="viewer-close">✕</button>
+  </div>
 </div>
 
 <script src="script.js"></script>
