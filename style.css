@@ -319,83 +319,43 @@ body::before {
 }
 
 @media (min-width: 768px) {
-  #portfolioCard {
-    width: 720px;
-  }
+  #portfolioCard { width: 720px; }
 }
 
 /* =========================
    RESPONSIVE PORTAFOLIO
    ========================= */
 
-/* Card del portafolio */
 #portfolioCard {
   width: 92vw;
   max-width: 1000px;
 }
 
-/* Ajuste general mobile */
 @media (max-width: 480px) {
-
-  .portfolio-header h2 {
-    font-size: 22px;
-  }
-
-  .portfolio-header p {
-    font-size: 13px;
-    padding: 0 10px;
-  }
-
-  .brand h3 {
-    font-size: 18px;
-    text-align: center;
-  }
-
-  .gallery {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-  }
-
-  .photo {
-    border-radius: 14px;
-  }
+  .portfolio-header h2 { font-size: 22px; }
+  .portfolio-header p { font-size: 13px; padding: 0 10px; }
+  .brand h3 { font-size: 18px; text-align: center; }
+  .gallery { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .photo { border-radius: 14px; }
 }
 
-/* Tablets */
 @media (min-width: 481px) and (max-width: 900px) {
-
-  #portfolioCard {
-    width: 95vw;
-  }
-
-  .gallery {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  #portfolioCard { width: 95vw; }
+  .gallery { grid-template-columns: repeat(3, 1fr); }
 }
 
-/* Desktop */
 @media (min-width: 901px) {
-
-  .gallery {
-    grid-template-columns: repeat(4, 1fr);
-  }
+  .gallery { grid-template-columns: repeat(4, 1fr); }
 }
 
-/* OTROS */
 @media (min-width: 910px) and (max-width: 1030px) {
-
-  .gallery {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  .gallery { grid-template-columns: repeat(3, 1fr); }
 }
 
-/* Pantallas muy grandes */
 @media (min-width: 1200px) {
-
-  .gallery {
-    grid-template-columns: repeat(6, 1fr);
-  }
+  .gallery { grid-template-columns: repeat(6, 1fr); }
 }
+
 .name {
   margin: 0 0 2px 0;
   font-weight: 700;
@@ -407,10 +367,9 @@ body::before {
   color: #666;
 }
 
-
 .card .name {
   margin: 0;
-  margin-bottom: 2px;	
+  margin-bottom: 2px;
   font-weight: 700;
 }
 
@@ -419,9 +378,7 @@ body::before {
   line-height: 1.2;
   color: #666;
 }
-.role {
-  margin-bottom: 16px;
-}
+
 /* Separación correcta entre cargo y botones */
 .role {
   margin-bottom: 22px;
@@ -437,7 +394,7 @@ body::before {
 }
 
 .portfolio-desc {
-  margin-top: 18px;   /* separación desde el título */
+  margin-top: 18px;
   margin-bottom: 14px;
   font-style: italic;
 }
@@ -447,105 +404,6 @@ body::before {
   font-size: 14px;
 }
 
-
-/* =========================
-   NUESTROS EQUIPOS - CARRUSEL
-   ========================= */
-
-.brand.equipos {
-  margin-bottom: 50px;
-}
-
-.equipos-marquee {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-}
-
-.equipos-track {
-  display: flex;
-  gap: 0;
-  width: max-content;
-  animation: equiposScroll 28s linear infinite;
-}
-
-.equipos-marquee:hover .equipos-track {
-  animation-play-state: paused;
-}
-
-@keyframes equiposScroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-/* SOLO equipos */
-.brand.equipos .photo {
-  min-width: 220px;
-  height: 220px;
-  border-radius: 0;        /* ❌ sin círculo */
-  position: relative;
-  cursor: default;
-  animation: none;         /* sin entrada escalonada */
-}
-
-/* imagen */
-.brand.equipos .photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.45s ease;
-}
-
-/* hover zoom */
-.brand.equipos .photo:hover img {
-  transform: scale(1.12);
-}
-
-/* capa oscura */
-.brand.equipos .photo::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.45);
-  opacity: 0;
-  transition: opacity 0.35s ease;
-}
-
-.brand.equipos .photo:hover::after {
-  opacity: 1;
-}
-
-/* texto */
-.equip-label {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-weight: 700;
-  font-size: 18px;
-  letter-spacing: 1px;
-  opacity: 0;
-  z-index: 2;
-  transition: opacity 0.35s ease;
-}
-
-.brand.equipos .photo:hover .equip-label {
-  opacity: 1;
-}
-
-/* responsive */
-@media (max-width: 600px) {
-  .brand.equipos .photo {
-    min-width: 170px;
-    height: 170px;
-  }
-
-  .equip-label {
-    font-size: 15px;
-  }
-}
 /* =========================
    CARRUSEL - NUESTROS EQUIPOS
    ========================= */
@@ -565,16 +423,13 @@ body::before {
   gap: 0;
   width: max-content;
   animation: equiposScroll 28s linear infinite;
+  will-change: transform;
 }
 
-/* Animación continua */
+/* Animación continua (requiere duplicado completo en HTML) */
 @keyframes equiposScroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
 /* Fotos SOLO de equipos */
@@ -582,10 +437,11 @@ body::before {
   width: 180px;
   height: 180px;
   flex-shrink: 0;
-  border-radius: 0;           /* sin bordes circulares */
+  border-radius: 0;
   position: relative;
   overflow: hidden;
   background: #000;
+
   opacity: 1;
   transform: none;
   animation: none;
@@ -650,3 +506,87 @@ body::before {
     height: 140px;
   }
 }
+
+/* =========================
+   VISOR - CAPTION DENTRO
+   ========================= */
+
+.viewer-box {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 16px;
+  overflow: hidden; /* 🔥 CLAVE: todo queda dentro */
+  box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+}
+
+.image-viewer img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 0;           /* ya lo maneja viewer-box */
+  box-shadow: none;           /* ya lo maneja viewer-box */
+  transform: scale(0.92);
+  transition: transform 0.4s ease;
+  display: block;
+}
+
+.image-viewer.show img {
+  transform: scale(1);
+}
+
+/* Franja negra transparente dentro de la imagen */
+.viewer-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: 80px;                 /* 🔥 tamaño de la franja */
+  padding: 12px 16px;
+
+  background: rgba(0,0,0,0.65); /* negro más marcado */
+  color: #fff;
+  font-size: 25px;
+  font-weight: 600;
+
+  display: flex;               /* centra verticalmente */
+  align-items: center;
+
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+
+/* Solo desktop (dispositivos con hover real) */
+@media (hover: hover) and (pointer: fine) {
+  .viewer-box:hover .viewer-caption{
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+/* Botón cerrar siempre visible */
+.viewer-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-size: 20px;
+  background: rgba(0,0,0,0.35);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 6px 10px;
+}
+.viewer-close:hover {
+  background: rgba(0,0,0,0.55);
+}
+
+/* Mostrar caption cuando está activo (mobile tap) */
+.viewer-box.active .viewer-caption {
+  transform: translateY(0);
+  opacity: 1;
+}
+

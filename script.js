@@ -104,8 +104,16 @@ const viewerImg = document.getElementById("viewerImg");
 
 function openViewer(img) {
   viewerImg.src = img.src;
+
+  const caption = document.getElementById("viewerCaption");
+
+  // si tu imagen tiene data-caption lo usa, si no deja vacío
+  caption.textContent = img.dataset.caption || "";
+
   viewer.classList.add("show");
 }
+
+
 
 function closeViewer(e) {
   if (e.target === viewer || e.target.classList.contains("viewer-close")) {
@@ -114,5 +122,43 @@ function closeViewer(e) {
   }
 }
 
+// ===== CAPTION TOGGLE MOBILE (TOCAR FOTO = TOGGLE, TOCAR FONDO = OCULTAR) =====
+(function () {
+  const viewer = document.getElementById("imageViewer");
+  const closeBtn = viewer.querySelector(".viewer-close");
+
+  viewer.addEventListener("click", (e) => {
+    const box = e.target.closest(".viewer-box");
+    const caption = viewer.querySelector(".viewer-box");
+
+    // si tocas la X, no hacemos nada aquí (la X cierra)
+    if (e.target.closest(".viewer-close")) return;
+
+    // ✅ Si tocas FUERA de la imagen (fondo oscuro)
+    if (!box) {
+      // solo oculta franja si está activa
+      const activeBox = viewer.querySelector(".viewer-box.active");
+      if (activeBox) activeBox.classList.remove("active");
+      return;
+    }
+
+    // ✅ Si tocas DENTRO de la imagen: toggle franja
+    box.classList.toggle("active");
+  });
+
+  // La X siempre cierra sin interferencias
+  if (closeBtn) {
+    closeBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      closeViewer({ target: closeBtn });
+    });
+  }
+})();
+
 /* ===== INICIAR ===== */
 typeEffect();
+
+
+
+
+
