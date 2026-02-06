@@ -1,175 +1,230 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" href="./logo.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>YJ Publicidad</title>
-  <link rel="stylesheet" href="./styles.css" />
-</head>
 
+  <link rel="stylesheet" href="style.css">
+
+  <!-- ICONOS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
 <body>
 
-  <!-- HEADER: Logo izquierda / menú derecha -->
-  <header class="header">
-
-    <!-- ✅ BRAND HOME: logo circular + texto (todo clickeable a INICIO) -->
-    <div class="brand">
-      <a href="#" class="brand-home" data-page="inicio" aria-label="Ir a inicio">
-        <span class="logo-wrap">
-          <img src="./logo.png" alt="YJ Publicidad">
-        </span>
-
-        <!-- ✅ Badge animado (base + capas) -->
-        <span class="brand-badge badge-anim" aria-hidden="true">
-          <!-- base: define tamaño -->
-          <img class="badge-frame f0" src="./publicidad-integral.png" alt="">
-          <!-- capas: animación -->
-          <img class="badge-frame f1" src="./publicidad-integral1.png" alt="">
-          <img class="badge-frame f2" src="./publicidad-integral2.png" alt="">
-          <img class="badge-frame f3" src="./publicidad-integral3.png" alt="">
-          <img class="badge-frame f4" src="./publicidad-integral4.png" alt="">
-        </span>
-      </a>
-    </div>
-
-    <!-- ✅ Botón hamburguesa (solo móvil) -->
-    <button class="menu-btn" id="menuBtn" type="button" aria-label="Abrir menú" aria-expanded="false">
-      <span class="menu-icon" aria-hidden="true"></span>
-    </button>
-
-    <!-- ✅ Menú desktop -->
-    <nav class="topnav topnav--desktop" aria-label="Menú principal">
-      <a href="#" class="navlink" data-page="inicio">INICIO</a>
-      <span class="dot">•</span>
-
-      <a href="#" class="navlink" data-page="servicios">NUESTROS SERVICIOS</a>
-      <span class="dot">•</span>
-
-      <a href="#" class="navlink" data-page="portafolio">PORTAFOLIO</a>
-      <span class="dot">•</span>
-
-      <a href="#" class="navlink" data-page="quienes">QUIENES SOMOS</a>
-      <span class="dot">•</span>
-
-      <a href="#" class="navlink" data-page="clientes">NUESTROS CLIENTES</a>
-      <span class="dot">•</span>
-
-      <a href="#" class="navlink" data-page="cotizacion">CONTACTO</a>
-    </nav>
-
-    <!-- ✅ Menú móvil -->
-    <div class="mnav" id="mnav" aria-hidden="true">
-      <div class="mnav-backdrop" data-close="1"></div>
-
-      <nav class="mnav-panel" aria-label="Menú móvil">
-        <a href="#" class="mnav-link" data-page="inicio">INICIO</a>
-        <a href="#" class="mnav-link" data-page="servicios">NUESTROS SERVICIOS</a>
-        <a href="#" class="mnav-link" data-page="portafolio">PORTAFOLIO</a>
-        <a href="#" class="mnav-link" data-page="quienes">QUIENES SOMOS</a>
-        <a href="#" class="mnav-link" data-page="clientes">NUESTROS CLIENTES</a>
-        <a href="#" class="mnav-link" data-page="cotizacion">CONTACTO</a>
-      </nav>
-    </div>
-  </header>
-
-  <!-- APP -->
-  <div id="app">
-
-    <!-- INICIO -->
-    <main id="page-inicio" class="page">
-      <!-- ✅ HERO con video + overlay -->
-      <section class="hero hero--video">
-
-        <!-- Video de fondo -->
-        <video class="hero-video" autoplay muted loop playsinline preload="metadata">
-          <source src="./intrologo.mp4" type="video/mp4">
-        </video>
-
-        <!-- Overlay negro transparente SOLO sobre el video -->
-        <div class="hero-overlay" aria-hidden="true"></div>
-
-        <!-- Contenido encima -->
-        <div class="hero-inner page-content">
-          <h1>YJ Publicidad</h1>
-          <p>Transformamos ideas en imágenes</p>
-          <button class="hero-cta" id="btnIrCotizacion" type="button">Pedir cotización</button>
-        </div>
-
-      </section>
-    </main>
-
-    <!-- SERVICIOS -->
-    <main id="page-servicios" class="page">
-      <section class="simple-page">
-        <div class="simple-inner page-content">
-          <h2>Nuestros Servicios</h2>
-          <p>Contenido en construcción.</p>
-        </div>
-      </section>
-    </main>
-
-    <!-- PORTAFOLIO -->
-    <main id="page-portafolio" class="page">
-      <section class="simple-page">
-        <div class="simple-inner page-content">
-          <h2>Portafolio</h2>
-          <p>Contenido en construcción.</p>
-        </div>
-      </section>
-    </main>
-
-    <!-- QUIENES SOMOS -->
-    <main id="page-quienes" class="page">
-      <section class="simple-page">
-        <div class="simple-inner page-content">
-          <h2>Quienes Somos</h2>
-          <p>Contenido en construcción.</p>
-        </div>
-      </section>
-    </main>
-
-    <!-- CLIENTES -->
-    <main id="page-clientes" class="page">
-      <section class="simple-page">
-        <div class="simple-inner page-content">
-          <h2>Nuestros Clientes</h2>
-          <p>Contenido en construcción.</p>
-        </div>
-      </section>
-    </main>
-
-    <!-- CONTACTO -->
-    <main id="page-cotizacion" class="page">
-      <section class="cotizacion-page">
-        <div class="cotizacion-inner page-content">
-          <h2>PIDE TU COTIZACIÓN</h2>
-          <p class="sub">Escríbenos y un ejecutivo se estará comunicando a la brevedad posible.</p>
-
-          <div class="form-row">
-            <input id="nombre" type="text" placeholder="Nombre">
-            <input id="email" type="email" placeholder="Email">
-            <input id="telefonos" type="text" placeholder="Teléfonos">
-          </div>
-
-          <textarea id="mensaje" placeholder="Escribe tu mensaje aquí..." rows="7"></textarea>
-
-          <div class="actions">
-            <button type="button" id="sendGmail" class="btn gmail">Enviar por Gmail</button>
-            <button type="button" id="sendOutlook" class="btn outlook">Enviar por Outlook</button>
-            <button type="button" id="copyEmail" class="btn copy">Copiar correo</button>
-          </div>
-
-          <div class="back-row">
-            <p class="mini">Destino: <strong>arte1@yjpublicidad.pe</strong></p>
-          </div>
-        </div>
-      </section>
-    </main>
-
+<!-- INTRO -->
+<div id="intro">
+  <div class="logo-intro">
+    <img src="YJ DIF1.jpg" alt="Logo YJ">
   </div>
 
-  
-  <script src="./script.js"></script>
+  <div class="typing">
+    <span id="typing-text"></span><span class="cursor">|</span>
+  </div>
+</div>
+
+<!-- CARD PRINCIPAL -->
+<div class="card" id="card">
+  <div class="logo">
+    <img src="YJ DIF1.jpg" alt="Logo YJ">
+  </div>
+
+  <p class="name"><strong>Yvanof Franco Sevilla</strong></p>
+  <p class="role">Gerente Comercial</p>
+
+  <div class="buttons">
+    <a href="https://wa.me/51959743755?text=Quiero%20Mas%20Informacion" target="_blank" class="btn whatsapp">
+      <i class="fa-brands fa-whatsapp"></i> WhatsApp
+    </a>
+
+    <button class="btn mail" onclick="openView('mailView','mailCard')">
+      <i class="fa-solid fa-envelope"></i> Correo
+    </button>
+
+    <button class="btn portfolio" onclick="openView('portfolioView','portfolioCard')">
+      <i class="fa-solid fa-briefcase"></i> Ver Portafolio
+    </button>
+  </div>
+</div>
+
+<!-- PORTAFOLIO -->
+<div class="portfolio-view" id="portfolioView">
+  <div class="view-card" id="portfolioCard">
+
+    <div class="portfolio-header">
+      <h1>Portafolio</h1>
+
+      <p class="portfolio-desc">
+        <strong><em>
+          Contamos con un equipo de alta calidad profesional y hacemos uso de tecnologías avanzadas que nos permiten realizar trabajos de muy buena calidad y a costos competitivos, brindar soluciones integrales en diseño y PRODUCCION de elementos para la comunicación visual.
+        </em></strong>
+      </p>
+
+      <p class="portfolio-services">
+        Realizamos Retail, Gran Formato, POP, Cortes en Láser, Impresiones en vinil solvente y UV, Impresiones en Tela Led
+      </p>
+    </div>
+
+    <!-- ===================== -->
+    <!-- NUESTROS EQUIPOS -->
+    <!-- ===================== -->
+    <div class="brand equipos">
+      <h3>Nuestros Equipos</h3>
+
+      <div class="equipos-marquee">
+        <div class="equipos-track">
+
+          <!-- SET ORIGINAL -->
+          <div class="photo">
+            <img src="img/equipo1.jpg">
+            <span class="equip-label">UV</span>
+          </div>
+
+          <div class="photo">
+            <img src="img/equipo2.jpg">
+            <span class="equip-label">Corte Laser</span>
+          </div>
+
+          <div class="photo">
+            <img src="img/equipo3.jpg">
+            <span class="equip-label">Plotter</span>
+          </div>
+
+          <div class="photo">
+            <img src="img/equipo4.jpg">
+            <span class="equip-label">Solvente</span>
+          </div>
+
+          <div class="photo">
+            <img src="img/equipo5.jpg">
+            <span class="equip-label">Laminadora</span>
+          </div>
+
+          <div class="photo">
+            <img src="img/equipo6.jpg">
+            <span class="equip-label">Equipo de Diseño</span>
+          </div>
+
+          <!-- DUPLICADO COMPLETO PARA LOOP -->
+          <div class="photo">
+            <img src="img/equipo1.jpg">
+            <span class="equip-label">UV</span>
+          </div>
+
+          <div class="photo">
+            <img src="img/equipo2.jpg">
+            <span class="equip-label">Corte Laser</span>
+          </div>
+
+          <div class="photo">
+            <img src="img/equipo3.jpg">
+            <span class="equip-label">Plotter</span>
+          </div>
+
+          <div class="photo">
+            <img src="img/equipo4.jpg">
+            <span class="equip-label">Solvente</span>
+          </div>
+
+          <div class="photo">
+            <img src="img/equipo5.jpg">
+            <span class="equip-label">Laminadora</span>
+          </div>
+
+          <div class="photo">
+            <img src="img/equipo6.jpg">
+            <span class="equip-label">Equipo de Diseño</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-header">
+      <h1>Nuestros Clientes</h1>
+    </div>
+    <!-- RESTO DEL PORTAFOLIO -->
+    <div class="brand">
+      <h3>Samsung</h3>
+      <div class="gallery">
+        <div class="photo"><img src="img/samsung1.jpg" data-caption="INSTALACION DE TELA LED UV" onclick="openViewer(this)" ></div>
+        <div class="photo"><img src="img/samsung2.jpg" data-caption="INSTALACION DE VINIL UV EN COLUMNA" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/samsung3.jpg" data-caption="INSTALACION Y BRANDEO DE PORTICO" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/samsung4.jpg" data-caption="INSTALACION VINIL AL ESPEJO UV CON LUZ" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/samsung5.jpg" data-caption="INSTALACION Y BRANDEO DE VITRINA" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/samsung6.jpg" data-caption="INSTALACION Y BRANDEO DE VITRINA" onclick="openViewer(this)"></div>
+      </div>
+    </div>
+
+    <div class="brand">
+      <h3>DBS</h3>
+      <div class="gallery">
+        <div class="photo"><img src="img/dbs1.jpg" data-caption="INSTALACION DE VINIL" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/dbs2.jpg" data-caption="BRANDEO DE MAMPARAS" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/dbs3.jpg" data-caption="BRANDEO DE MUEBLE" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/dbs4.jpg" data-caption="BRANDEO DE MUEBLE CABECERA" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/dbs5.jpg" data-caption="BRANDEO DE CUBRESENSORES" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/dbs6.jpg" data-caption="INSTALACION DE VINIL" onclick="openViewer(this)"></div>
+      </div>
+    </div>
+
+    <div class="brand">
+      <h3>Check</h3>
+      <div class="gallery">
+        <div class="photo"><img src="img/check1.jpg" data-caption="BRANDEO DE MUEBLE CABECERA" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/check2.jpg" ata-caption="BRANDEO DE CUBRESENSORES" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/check3.jpg" data-caption="BRANDEO DE MUEBLE CABECERA" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/check4.jpg" data-caption="IMPRESION Y BRANDEO DE JALAVISTA" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/check5.jpg" data-caption="BRANDEO DE MUEBLE CABECERA" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/check6.jpg" data-caption="IMPRESION Y BRANDEO DE JALAVISTA" onclick="openViewer(this)"></div>
+      </div>
+    </div>
+
+    <div class="buttons back-btn">
+      <button class="btn portfolio" onclick="closeViews()">
+        <i class="fa-solid fa-arrow-left"></i> Volver
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- CORREO -->
+<div class="portfolio-view" id="mailView">
+  <div class="view-card" id="mailCard">
+
+    <div class="buttons">
+      <a href="https://mail.google.com/mail/?view=cm&to=yfranco@yjpublicidad.pe" target="_blank" class="btn gmail">
+        <i class="fa-brands fa-google"></i> Gmail
+      </a>
+
+      <a href="https://outlook.live.com/mail/0/deeplink/compose?to=yfranco@yjpublicidad.pe" target="_blank" class="btn outlook">
+        <i class="fa-brands fa-microsoft"></i> Outlook
+      </a>
+
+      <button class="btn mail" onclick="copyMail()">
+        <i class="fa-solid fa-copy"></i> Copiar correo
+      </button>
+
+      <div id="copyMessage">Correo copiado</div>
+    </div>
+
+    <div class="buttons back-btn">
+      <button class="btn portfolio" onclick="closeViews()">
+        <i class="fa-solid fa-arrow-left"></i> Volver
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<div id="imageViewer" class="image-viewer" onclick="closeViewer(event)">
+  <div class="viewer-box">
+    <img id="viewerImg" src="" alt="Vista completa">
+    <div id="viewerCaption" class="viewer-caption">Texto de ejemplo</div>
+    <button class="viewer-close">✕</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>

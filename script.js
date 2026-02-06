@@ -1,260 +1,164 @@
-document.addEventListener("DOMContentLoaded", () => {
+const text = "ESPECIALISTAS EN SOLUCIONES INTEGRALES\nTransformamos ideas en imágenes";
+const typingText = document.getElementById("typing-text");
+const cursor = document.querySelector(".cursor");
+const intro = document.getElementById("intro");
+const logoIntro = document.querySelector(".logo-intro");
+const card = document.getElementById("card");
 
-  // =========================
-  // Menú hamburguesa (móvil)
-  // =========================
-  const header = document.querySelector(".header");
-  const menuBtn = document.getElementById("menuBtn");
-  const mnav = document.getElementById("mnav");
+let index = 0;
+let activeView = null;
+let activeCard = null;
+let isTransitioning = false;
 
-  const openMenu = () => {
-    if (!header || !menuBtn || !mnav) return;
-    header.classList.add("is-menu-open");
-    mnav.classList.add("is-open");
-    menuBtn.setAttribute("aria-expanded", "true");
-    mnav.setAttribute("aria-hidden", "false");
-  };
-
-  const closeMenu = () => {
-    if (!header || !menuBtn || !mnav) return;
-    header.classList.remove("is-menu-open");
-    mnav.classList.remove("is-open");
-    menuBtn.setAttribute("aria-expanded", "false");
-    mnav.setAttribute("aria-hidden", "true");
-  };
-
-  if (menuBtn && mnav && header) {
-    menuBtn.addEventListener("click", () => {
-      const isOpen = mnav.classList.contains("is-open");
-      isOpen ? closeMenu() : openMenu();
-    });
-
-    // click fuera (backdrop)
-    mnav.addEventListener("click", (e) => {
-      const t = e.target;
-      if (t && t.getAttribute && t.getAttribute("data-close") === "1") closeMenu();
-    });
-
-    // ESC
-    window.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeMenu();
-    });
-
-    // si vuelves a desktop, cerrar
-    window.addEventListener("resize", () => {
-      if (window.innerWidth > 768) closeMenu();
-    });
+/* ===== INTRO ===== */
+function typeEffect() {
+  if (index < text.length) {
+    typingText.innerHTML += text[index] === "\n" ? "<br>" : text[index];
+    index++;
+    setTimeout(typeEffect, 50);
+  } else {
+    cursor.style.display = "none";
+    finishIntro();
   }
+}
 
-  // =========================
-  // Navegación + Netflix Slide
-  // =========================
-  let isTransitioning = false;
+function finishIntro() {
+  setTimeout(() => {
+    logoIntro.classList.add("shrink");
+    intro.style.opacity = "0";
+  }, 600);
 
-  // Orden del menú (para saber si vas hacia adelante o atrás)
-  const PAGE_ORDER = ["inicio", "servicios", "portafolio", "quienes", "clientes", "cotizacion"];
+  setTimeout(() => {
+    intro.style.display = "none";
+    card.classList.add("show");
+  }, 1400);
+}
 
-  function setActiveNav(pageName) {
-    // Desktop
-    document.querySelectorAll(".navlink").forEach(a => a.classList.remove("is-active"));
-    document.querySelector(`.navlink[data-page="${pageName}"]`)?.classList.add("is-active");
+/* ===== SISTEMA DE VISTAS (ROBUSTO) ===== */
+function openView(viewId, cardId) {
+  const view = document.getElementById(viewId);
+  const viewCard = document.getElementById(cardId);
 
-    // Móvil (panel)
-    document.querySelectorAll(".mnav-link").forEach(a => a.classList.remove("is-active"));
-    document.querySelector(`.mnav-link[data-page="${pageName}"]`)?.classList.add("is-active");
+  // prevenir clicks dobles
+  if (activeView) return;
+
+  // salida card principal
+  card.classList.remove("show");
+  card.classList.add("hide");
+
+  setTimeout(() => {
+    card.classList.remove("hide");
+
+    view.classList.add("show");
+    viewCard.classList.add("show");
+
+    activeView = view;
+    activeCard = viewCard;
+  }, 350);
+}
+
+function showView(view, viewCard) {
+  view.classList.add("show");
+
+  setTimeout(() => {
+    viewCard.classList.add("show");
+  }, 50);
+
+  activeView = view;
+  activeCard = viewCard;
+}
+
+function closeViews() {
+  if (!activeView || !activeCard) return;
+
+  // salida card actual (correo o portafolio)
+  activeCard.classList.remove("show");
+  activeCard.classList.add("hide");
+
+  setTimeout(() => {
+    activeView.classList.remove("show");
+    activeCard.classList.remove("hide");
+
+    // entrada card principal
+    card.classList.add("show");
+
+    activeView = null;
+    activeCard = null;
+  }, 350);
+}
+
+
+
+
+/* ===== COPIAR CORREO ===== */
+function copyMail() {
+  navigator.clipboard.writeText("yfranco@yjpublicidad.pe");
+  const msg = document.getElementById("copyMessage");
+  msg.classList.add("show");
+  setTimeout(() => msg.classList.remove("show"), 2000);
+}
+
+/* ===== VISOR DE IMÁGENES ===== */
+const viewer = document.getElementById("imageViewer");
+const viewerImg = document.getElementById("viewerImg");
+
+function openViewer(img) {
+  viewerImg.src = img.src;
+
+  const caption = document.getElementById("viewerCaption");
+
+  // si tu imagen tiene data-caption lo usa, si no deja vacío
+  caption.textContent = img.dataset.caption || "";
+
+  viewer.classList.add("show");
+}
+
+
+
+function closeViewer(e) {
+  if (e.target === viewer || e.target.classList.contains("viewer-close")) {
+    viewer.classList.remove("show");
+    viewerImg.src = "";
   }
+}
 
-  function getPage(name) {
-    return document.getElementById(`page-${name}`);
-  }
+// ===== CAPTION TOGGLE MOBILE (TOCAR FOTO = TOGGLE, TOCAR FONDO = OCULTAR) =====
+(function () {
+  const viewer = document.getElementById("imageViewer");
+  const closeBtn = viewer.querySelector(".viewer-close");
 
-  function getCurrentName() {
-    const current = document.querySelector(".page.is-active");
-    if (!current) return "inicio";
-    const id = current.id || "";
-    return id.replace("page-", "") || "inicio";
-  }
+  viewer.addEventListener("click", (e) => {
+    const box = e.target.closest(".viewer-box");
+    const caption = viewer.querySelector(".viewer-box");
 
-  function cleanupAnimClasses(el) {
-    if (!el) return;
-    el.classList.remove(
-      "enter-from-right", "enter-from-left",
-      "leave-to-left", "leave-to-right"
-    );
-  }
+    // si tocas la X, no hacemos nada aquí (la X cierra)
+    if (e.target.closest(".viewer-close")) return;
 
-  function showPage(pageName, { immediate = false } = {}) {
-    if (isTransitioning && !immediate) return;
-
-    const current = document.querySelector(".page.is-active");
-    const next = getPage(pageName);
-    if (!next || next === current) return;
-
-    const currentName = getCurrentName();
-    const fromIndex = PAGE_ORDER.indexOf(currentName);
-    const toIndex = PAGE_ORDER.indexOf(pageName);
-
-    // Dirección tipo Netflix
-    const forward = (toIndex === -1 || fromIndex === -1) ? true : (toIndex > fromIndex);
-
-    const enterClass = forward ? "enter-from-right" : "enter-from-left";
-    const leaveClass = forward ? "leave-to-left" : "leave-to-right";
-
-    setActiveNav(pageName);
-
-    // ✅ si estás en móvil, cerrar menú al navegar
-    closeMenu();
-
-    if (immediate) {
-      document.querySelectorAll(".page").forEach(p => {
-        p.classList.remove("is-active");
-        cleanupAnimClasses(p);
-      });
-      next.classList.add("is-active");
+    // ✅ Si tocas FUERA de la imagen (fondo oscuro)
+    if (!box) {
+      // solo oculta franja si está activa
+      const activeBox = viewer.querySelector(".viewer-box.active");
+      if (activeBox) activeBox.classList.remove("active");
       return;
     }
 
-    isTransitioning = true;
-
-    // Limpieza previa
-    cleanupAnimClasses(next);
-
-    // 1) Preparar next con “estado de entrada”
-    next.classList.add("is-active");
-    next.classList.add(enterClass);
-
-    // Forzar reflow
-    void next.offsetWidth;
-
-    // 2) Animar hacia el centro y sacar current
-    requestAnimationFrame(() => {
-      next.classList.remove(enterClass);
-
-      if (current) {
-        cleanupAnimClasses(current);
-        current.classList.add(leaveClass);
-      }
-
-      const DURATION = 700; // un poco mayor a 650ms
-      setTimeout(() => {
-        if (current) {
-          current.classList.remove("is-active");
-          cleanupAnimClasses(current);
-        }
-        cleanupAnimClasses(next);
-        isTransitioning = false;
-
-        // ✅ como el scroll es dentro de .page, lo reiniciamos aquí:
-        next.scrollTo({ top: 0, behavior: "auto" });
-      }, DURATION);
-    });
-  }
-
-  // =========================
-  // Clicks del menú (Desktop)
-  // =========================
-  document.querySelectorAll(".navlink[data-page]").forEach(link => {
-    link.addEventListener("click", e => {
-      e.preventDefault();
-      showPage(link.dataset.page);
-    });
+    // ✅ Si tocas DENTRO de la imagen: toggle franja
+    box.classList.toggle("active");
   });
 
-  // =========================
-  // Clicks del menú (Móvil)
-  // =========================
-  document.querySelectorAll(".mnav-link[data-page]").forEach(link => {
-    link.addEventListener("click", e => {
-      e.preventDefault();
-      showPage(link.dataset.page);
+  // La X siempre cierra sin interferencias
+  if (closeBtn) {
+    closeBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      closeViewer({ target: closeBtn });
     });
-  });
-
-  // ✅ BRAND HOME (logo + publicidad integral) -> INICIO
-  document.querySelector(".brand-home[data-page]")?.addEventListener("click", (e) => {
-    e.preventDefault();
-    showPage("inicio");
-  });
-
-  // Botón directo a cotización
-  document.getElementById("btnIrCotizacion")?.addEventListener("click", () => showPage("cotizacion"));
-
-  // Inicial
-  showPage("inicio", { immediate: true });
-
-  // =========================
-  // Gmail / Outlook / Copiar
-  // =========================
-  const DESTINO = "arte1@yjpublicidad.pe";
-  const $ = (id) => document.getElementById(id);
-
-  function getData() {
-    return {
-      nombre: ($("nombre")?.value || "").trim(),
-      email: ($("email")?.value || "").trim(),
-      telefonos: ($("telefonos")?.value || "").trim(),
-      mensaje: ($("mensaje")?.value || "").trim(),
-    };
   }
+})();
 
-  function buildSubject(data) {
-    const base = "Cotización - YJ Publicidad";
-    const from = data.nombre ? ` | ${data.nombre}` : "";
-    return base + from;
-  }
+/* ===== INICIAR ===== */
+typeEffect();
 
-  function buildBody(data) {
-    return [
-      "Hola YJ Publicidad,",
-      "",
-      "Quisiera una cotización con los siguientes datos:",
-      "",
-      `Nombre: ${data.nombre || "-"}`,
-      `Email: ${data.email || "-"}`,
-      `Teléfonos: ${data.telefonos || "-"}`,
-      "",
-      "Mensaje:",
-      data.mensaje || "-",
-      "",
-      "Enviado desde la web de YJ Publicidad.",
-    ].join("\n");
-  }
 
-  function openGmail() {
-    const data = getData();
-    const subject = encodeURIComponent(buildSubject(data));
-    const body = encodeURIComponent(buildBody(data));
-    const to = encodeURIComponent(DESTINO);
 
-    const url = `https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${subject}&body=${body}`;
-    window.open(url, "_blank", "noopener");
-  }
 
-  function openOutlook() {
-    const data = getData();
-    const subject = encodeURIComponent(buildSubject(data));
-    const body = encodeURIComponent(buildBody(data));
-    const to = encodeURIComponent(DESTINO);
 
-    const url = `https://outlook.office.com/mail/deeplink/compose?to=${to}&subject=${subject}&body=${body}`;
-    window.open(url, "_blank", "noopener");
-  }
-
-  async function copyEmail() {
-    try {
-      await navigator.clipboard.writeText(DESTINO);
-      const btn = $("copyEmail");
-      if (btn) {
-        const old = btn.textContent;
-        btn.textContent = "¡Copiado!";
-        setTimeout(() => (btn.textContent = old), 1200);
-      }
-    } catch {
-      alert("No se pudo copiar automáticamente. Copia manualmente: " + DESTINO);
-    }
-  }
-
-  $("sendGmail")?.addEventListener("click", openGmail);
-  $("sendOutlook")?.addEventListener("click", openOutlook);
-  $("copyEmail")?.addEventListener("click", copyEmail);
-});
