@@ -1,0 +1,592 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Segoe UI", sans-serif;
+  background: #2b2b2b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* FONDO ANIMADO (ÚNICO Y GLOBAL) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -20%;
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(255,255,255,0.05),
+    rgba(255,255,255,0.05) 2px,
+    transparent 2px,
+    transparent 60px
+  );
+  animation: moveStripes 12s linear infinite;
+  z-index: -1;
+}
+
+@keyframes moveStripes {
+  from { transform: translate3d(1px,1px,0); }
+  to   { transform: translate3d(126.7px,126.7px,0); }
+}
+
+/* INTRO */
+#intro {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: opacity 0.8s ease;
+}
+
+.logo-intro {
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #fff;
+  margin-bottom: 20px;
+  transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+.logo-intro img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.logo-intro.shrink {
+  transform: scale(0.5);
+  opacity: 0;
+}
+
+.typing {
+  font-size: 15px;
+  color: #aaa;
+  text-align: center;
+}
+
+.cursor {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* =========================
+   ANIMACIÓN UNIFICADA CARDS
+   ========================= */
+
+.card,
+.view-card {
+  background: #fff;
+  width: 320px;
+  padding: 28px 22px;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  position: absolute;
+}
+
+/* visible */
+.card.show,
+.view-card.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* salida */
+.card.hide,
+.view-card.hide {
+  opacity: 0;
+  transform: scale(0.92);
+}
+
+/* CARD INICIO */
+.logo {
+  width: 110px;
+  height: 110px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* BOTONES */
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn {
+  width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+  background: none;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+  filter: brightness(1.08);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+/* COLORES BOTONES */
+.whatsapp  { background: #4fa383; }
+.mail      { background: #1f2a35; }
+.portfolio { background: #c94b32; }
+.gmail     { background: #ea4335; }
+.outlook   { background: #0078d4; }
+
+/* OVERLAY PORTAFOLIO / CORREO */
+.portfolio-view {
+  position: fixed;
+  inset: 0;
+  background: transparent;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  z-index: 20;
+}
+
+.portfolio-view.show {
+  display: flex;
+  opacity: 1;
+}
+
+/* SCROLL INTERNO */
+.view-card {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* PORTAFOLIO */
+.portfolio-header {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.brand {
+  margin-bottom: 40px;
+}
+
+.brand h3 {
+  margin-bottom: 16px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 18px;
+}
+
+.photo {
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #111;
+  opacity: 0;
+  transform: scale(0.95);
+  animation: photoIn 0.6s ease forwards;
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.photo:hover img {
+  transform: scale(1.08);
+}
+
+@keyframes photoIn {
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* BOTÓN VOLVER */
+.back-btn {
+  margin-top: 30px;
+}
+
+/* MENSAJE COPIADO */
+#copyMessage {
+  text-align: center;
+  color: #5fd38c;
+  font-size: 14px;
+  opacity: 0;
+  margin-top: 10px;
+  transition: opacity 0.4s ease;
+}
+
+#copyMessage.show {
+  opacity: 1;
+}
+
+/* VISOR IMÁGENES */
+.image-viewer {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 50;
+}
+
+.image-viewer.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.image-viewer img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 16px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+  transform: scale(0.92);
+  transition: transform 0.4s ease;
+}
+
+.image-viewer.show img {
+  transform: scale(1);
+}
+
+.viewer-close {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  font-size: 26px;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* PORTAFOLIO MÁS ANCHO */
+#portfolioCard {
+  width: 420px;
+}
+
+@media (min-width: 768px) {
+  #portfolioCard { width: 720px; }
+}
+
+/* =========================
+   RESPONSIVE PORTAFOLIO
+   ========================= */
+
+#portfolioCard {
+  width: 92vw;
+  max-width: 1000px;
+}
+
+@media (max-width: 480px) {
+  .portfolio-header h2 { font-size: 22px; }
+  .portfolio-header p { font-size: 13px; padding: 0 10px; }
+  .brand h3 { font-size: 18px; text-align: center; }
+  .gallery { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .photo { border-radius: 14px; }
+}
+
+@media (min-width: 481px) and (max-width: 900px) {
+  #portfolioCard { width: 95vw; }
+  .gallery { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 901px) {
+  .gallery { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (min-width: 910px) and (max-width: 1030px) {
+  .gallery { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 1200px) {
+  .gallery { grid-template-columns: repeat(6, 1fr); }
+}
+
+.name {
+  margin: 0 0 2px 0;
+  font-weight: 700;
+}
+
+.role {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.card .name {
+  margin: 0;
+  margin-bottom: 2px;
+  font-weight: 700;
+}
+
+.card .role {
+  margin: 0;
+  line-height: 1.2;
+  color: #666;
+}
+
+/* Separación correcta entre cargo y botones */
+.role {
+  margin-bottom: 22px;
+}
+
+/* Seguridad extra por si otro estilo lo pisa */
+.buttons {
+  margin-top: 8px;
+}
+
+.portfolio-header h1 {
+  margin-bottom: 14px;
+}
+
+.portfolio-desc {
+  margin-top: 18px;
+  margin-bottom: 14px;
+  font-style: italic;
+}
+
+.portfolio-services {
+  margin-top: 6px;
+  font-size: 14px;
+}
+
+/* =========================
+   CARRUSEL - NUESTROS EQUIPOS
+   ========================= */
+
+.brand.equipos {
+  margin-bottom: 50px;
+}
+
+.equipos-marquee {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.equipos-track {
+  display: flex;
+  gap: 0;
+  width: max-content;
+  animation: equiposScroll 28s linear infinite;
+  will-change: transform;
+}
+
+/* Animación continua (requiere duplicado completo en HTML) */
+@keyframes equiposScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Fotos SOLO de equipos */
+.brand.equipos .photo {
+  width: 180px;
+  height: 180px;
+  flex-shrink: 0;
+  border-radius: 0;
+  position: relative;
+  overflow: hidden;
+  background: #000;
+
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
+/* Imagen */
+.brand.equipos .photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+/* Hover zoom */
+.brand.equipos .photo:hover img {
+  transform: scale(1.15);
+}
+
+/* Capa oscura */
+.brand.equipos .photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.brand.equipos .photo:hover::after {
+  opacity: 1;
+}
+
+/* Texto encima */
+.equip-label {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 0.4s ease;
+}
+
+.brand.equipos .photo:hover .equip-label {
+  opacity: 1;
+}
+
+/* Pausa el carrusel cuando pasas el mouse */
+.equipos-marquee:hover .equipos-track {
+  animation-play-state: paused;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .brand.equipos .photo {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+/* =========================
+   VISOR - CAPTION DENTRO
+   ========================= */
+
+.viewer-box {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 16px;
+  overflow: hidden; /* 🔥 CLAVE: todo queda dentro */
+  box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+}
+
+.image-viewer img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 0;           /* ya lo maneja viewer-box */
+  box-shadow: none;           /* ya lo maneja viewer-box */
+  transform: scale(0.92);
+  transition: transform 0.4s ease;
+  display: block;
+}
+
+.image-viewer.show img {
+  transform: scale(1);
+}
+
+/* Franja negra transparente dentro de la imagen */
+.viewer-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: 80px;                 /* 🔥 tamaño de la franja */
+  padding: 12px 16px;
+
+  background: rgba(0,0,0,0.65); /* negro más marcado */
+  color: #fff;
+  font-size: 25px;
+  font-weight: 600;
+
+  display: flex;               /* centra verticalmente */
+  align-items: center;
+
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+
+/* Solo desktop (dispositivos con hover real) */
+@media (hover: hover) and (pointer: fine) {
+  .viewer-box:hover .viewer-caption{
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+/* Botón cerrar siempre visible */
+.viewer-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-size: 20px;
+  background: rgba(0,0,0,0.35);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 6px 10px;
+}
+.viewer-close:hover {
+  background: rgba(0,0,0,0.55);
+}
+
+/* Mostrar caption cuando está activo (mobile tap) */
+.viewer-box.active .viewer-caption {
+  transform: translateY(0);
+  opacity: 1;
+}
+

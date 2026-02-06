@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YJ Publicidad</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- ICONOS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<!-- INTRO -->
+<div id="intro">
+  <div class="logo-intro">
+    <img src="YJ DIF1.jpg" alt="Logo YJ">
+  </div>
+
+  <div class="typing">
+    <span id="typing-text"></span><span class="cursor">|</span>
+  </div>
+</div>
+
+<!-- CARD PRINCIPAL -->
+<div class="card" id="card">
+  <div class="logo">
+    <img src="YJ DIF1.jpg" alt="Logo YJ">
+  </div>
+
+  <p class="name"><strong>Yvanof Franco Sevilla</strong></p>
+  <p class="role">Gerente Comercial</p>
+
+  <div class="buttons">
+    <a href="https://wa.me/51959743755?text=Quiero%20Mas%20Informacion" target="_blank" class="btn whatsapp">
+      <i class="fa-brands fa-whatsapp"></i> WhatsApp
+    </a>
+
+    <button class="btn mail" onclick="openView('mailView','mailCard')">
+      <i class="fa-solid fa-envelope"></i> Correo
+    </button>
+
+    <button class="btn portfolio" onclick="openView('portfolioView','portfolioCard')">
+      <i class="fa-solid fa-briefcase"></i> Ver Portafolio
+    </button>
+  </div>
+</div>
+
+<!-- PORTAFOLIO -->
+<div class="portfolio-view" id="portfolioView">
+  <div class="view-card" id="portfolioCard">
+
+    <div class="portfolio-header">
+      <h1>Portafolio</h1>
+
+      <p class="portfolio-desc">
+        <strong><em>
+          Contamos con un equipo de alta calidad profesional y hacemos uso de tecnologías avanzadas que nos permiten realizar trabajos de muy buena calidad y a costos competitivos, brindar soluciones integrales en diseño y PRODUCCION de elementos para la comunicación visual.
+        </em></strong>
+      </p>
+
+      <p class="portfolio-services">
+        Realizamos Retail, Gran Formato, POP, Cortes en Láser, Impresiones en vinil solvente y UV, Impresiones en Tela Led
+      </p>
+    </div>
+
+    <!-- ===================== -->
+    <!-- NUESTROS EQUIPOS -->
+    <!-- ===================== -->
+    <div class="brand equipos">
+      <h3>Nuestros Equipos</h3>
+
+      <div class="equipos-marquee">
+        <div class="equipos-track">
+
+          <!-- SET ORIGINAL -->
+          <div class="photo">
+            <img src="img/equipo1.jpg">
+            <span class="equip-label">UV</span>
+          </div>
+
+          <div class="photo">
+            <img src="img/equipo2.jpg">
+            <span class="equip-label">Corte Laser</span>
+          </div>
+
+          <div class="photo">
+            <img src="img/equipo3.jpg">
+            <span class="equip-label">Plotter</span>
+          </div>
+
+          <div class="photo">
+            <img src="img/equipo4.jpg">
+            <span class="equip-label">Solvente</span>
+          </div>
+
+          <div class="photo">
+            <img src="img/equipo5.jpg">
+            <span class="equip-label">Laminadora</span>
+          </div>
+
+          <div class="photo">
+            <img src="img/equipo6.jpg">
+            <span class="equip-label">Equipo de Diseño</span>
+          </div>
+
+          <!-- DUPLICADO COMPLETO PARA LOOP -->
+          <div class="photo">
+            <img src="img/equipo1.jpg">
+            <span class="equip-label">UV</span>
+          </div>
+
+          <div class="photo">
+            <img src="img/equipo2.jpg">
+            <span class="equip-label">Corte Laser</span>
+          </div>
+
+          <div class="photo">
+            <img src="img/equipo3.jpg">
+            <span class="equip-label">Plotter</span>
+          </div>
+
+          <div class="photo">
+            <img src="img/equipo4.jpg">
+            <span class="equip-label">Solvente</span>
+          </div>
+
+          <div class="photo">
+            <img src="img/equipo5.jpg">
+            <span class="equip-label">Laminadora</span>
+          </div>
+
+          <div class="photo">
+            <img src="img/equipo6.jpg">
+            <span class="equip-label">Equipo de Diseño</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-header">
+      <h1>Nuestros Clientes</h1>
+    </div>
+    <!-- RESTO DEL PORTAFOLIO -->
+    <div class="brand">
+      <h3>Samsung</h3>
+      <div class="gallery">
+        <div class="photo"><img src="img/samsung1.jpg" data-caption="INSTALACION DE TELA LED UV" onclick="openViewer(this)" ></div>
+        <div class="photo"><img src="img/samsung2.jpg" data-caption="INSTALACION DE VINIL UV EN COLUMNA" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/samsung3.jpg" data-caption="INSTALACION Y BRANDEO DE PORTICO" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/samsung4.jpg" data-caption="INSTALACION VINIL AL ESPEJO UV CON LUZ" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/samsung5.jpg" data-caption="INSTALACION Y BRANDEO DE VITRINA" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/samsung6.jpg" data-caption="INSTALACION Y BRANDEO DE VITRINA" onclick="openViewer(this)"></div>
+      </div>
+    </div>
+
+    <div class="brand">
+      <h3>DBS</h3>
+      <div class="gallery">
+        <div class="photo"><img src="img/dbs1.jpg" data-caption="INSTALACION DE VINIL" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/dbs2.jpg" data-caption="BRANDEO DE MAMPARAS" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/dbs3.jpg" data-caption="BRANDEO DE MUEBLE" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/dbs4.jpg" data-caption="BRANDEO DE MUEBLE CABECERA" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/dbs5.jpg" data-caption="BRANDEO DE CUBRESENSORES" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/dbs6.jpg" data-caption="INSTALACION DE VINIL" onclick="openViewer(this)"></div>
+      </div>
+    </div>
+
+    <div class="brand">
+      <h3>Check</h3>
+      <div class="gallery">
+        <div class="photo"><img src="img/check1.jpg" data-caption="BRANDEO DE MUEBLE CABECERA" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/check2.jpg" ata-caption="BRANDEO DE CUBRESENSORES" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/check3.jpg" data-caption="BRANDEO DE MUEBLE CABECERA" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/check4.jpg" data-caption="IMPRESION Y BRANDEO DE JALAVISTA" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/check5.jpg" data-caption="BRANDEO DE MUEBLE CABECERA" onclick="openViewer(this)"></div>
+        <div class="photo"><img src="img/check6.jpg" data-caption="IMPRESION Y BRANDEO DE JALAVISTA" onclick="openViewer(this)"></div>
+      </div>
+    </div>
+
+    <div class="buttons back-btn">
+      <button class="btn portfolio" onclick="closeViews()">
+        <i class="fa-solid fa-arrow-left"></i> Volver
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- CORREO -->
+<div class="portfolio-view" id="mailView">
+  <div class="view-card" id="mailCard">
+
+    <div class="buttons">
+      <a href="https://mail.google.com/mail/?view=cm&to=yfranco@yjpublicidad.pe" target="_blank" class="btn gmail">
+        <i class="fa-brands fa-google"></i> Gmail
+      </a>
+
+      <a href="https://outlook.live.com/mail/0/deeplink/compose?to=yfranco@yjpublicidad.pe" target="_blank" class="btn outlook">
+        <i class="fa-brands fa-microsoft"></i> Outlook
+      </a>
+
+      <button class="btn mail" onclick="copyMail()">
+        <i class="fa-solid fa-copy"></i> Copiar correo
+      </button>
+
+      <div id="copyMessage">Correo copiado</div>
+    </div>
+
+    <div class="buttons back-btn">
+      <button class="btn portfolio" onclick="closeViews()">
+        <i class="fa-solid fa-arrow-left"></i> Volver
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<div id="imageViewer" class="image-viewer" onclick="closeViewer(event)">
+  <div class="viewer-box">
+    <img id="viewerImg" src="" alt="Vista completa">
+    <div id="viewerCaption" class="viewer-caption">Texto de ejemplo</div>
+    <button class="viewer-close">✕</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
